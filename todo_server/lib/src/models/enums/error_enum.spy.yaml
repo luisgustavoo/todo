@@ -1,0 +1,8 @@
+### Tipo de erro
+enum: ErrorTypeEnum
+serialized: byName
+values:
+ - insert
+ - delete
+ - select
+ - update

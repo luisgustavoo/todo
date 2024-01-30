@@ -1,0 +1,6 @@
+exception: CustomException
+fields:
+  message: String
+  errorType: ErrorTypeEnum
+
+
