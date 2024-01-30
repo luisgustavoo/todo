@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:todo_server/src/web/widgets/default_page_widget.dart';
 import 'package:serverpod/serverpod.dart';
+import 'package:todo_server/src/web/widgets/default_page_widget.dart';
 
 class RouteRoot extends WidgetRoute {
   @override
