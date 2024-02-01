@@ -31,7 +31,7 @@ enable_redis = false
 hosted_zone_id             = "Z05900256LPMC3YC5A4Y"
 top_domain                 = "luisgustavo.dev.br"
 certificate_arn            = "arn:aws:acm:us-east-1:261183669449:certificate/1c5cfbcd-7a25-46b0-8927-56f1839d1475"
-cloudfront_certificate_arn = "<YOUR CERTIFICATE ARN IN US-EAST-1>"
+cloudfront_certificate_arn = "arn:aws:acm:us-east-1:261183669449:certificate/1c5cfbcd-7a25-46b0-8927-56f1839d1475"
 
 # Subdomains for different services. Default values are recommended, but you
 # may want to change the subdomain_web to www if you are using the top domain
@@ -59,7 +59,7 @@ use_top_domain_for_web = false
 # for a specifc region under EC2 > AMI Catalog in your AWS console.)
 # Note: For some regions the t2.micro is not available. If so, consult the AWS
 # documentation to find another instance type that suits your needs.
-instance_type                = "t2.micro"
+instance_type = "t2.micro"
 # instance_ami                 = "ami-0ca285d4c2cda3300"
 instance_ami                 = "ami-0a3c3a20c09d6f377"
 autoscaling_min_size         = 1

@@ -5,21 +5,21 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-# TODO: Fix?
-data "aws_ami" "amazon-linux" {
-  most_recent = true
-  owners      = ["amazon"]
+# # TODO: Fix?
+# data "aws_ami" "amazon-linux" {
+#   most_recent = true
+#   owners      = ["amazon"]
 
-  filter {
-    name   = "name"
-    values = ["amzn-ami-hvm-*-x86_64-ebs"]
-  }
-}
+#   filter {
+#     name   = "name"
+#     values = ["amzn-ami-hvm-*-x86_64-ebs"]
+#   }
+# }
 
 resource "aws_launch_configuration" "serverpod" {
   name_prefix = "${var.project_name}-"
   image_id    = var.instance_ami
-  #   image_id = data.aws_ami.amazon-linux.id
+  # image_id      = data.aws_ami.amazon-linux.id
   instance_type = var.instance_type
   user_data     = templatefile("init-script.sh", { runmode = "production" })
 
