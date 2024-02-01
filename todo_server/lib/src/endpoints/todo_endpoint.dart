@@ -17,7 +17,7 @@ class TodoEndpoint extends Endpoint {
         message: 'Erro ao criar tarefa $e',
         errorType: ErrorTypeEnum.insert,
       );
-    }
+    } 
   }
 
   Future<List<Todo>> findAll(Session session) {

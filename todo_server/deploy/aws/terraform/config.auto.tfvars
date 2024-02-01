@@ -15,7 +15,7 @@ project_name = "todo"
 # need to update the instance_ami variable (see below) and update the region in
 # the .github/workflows/deployment-aws.yml file. In some cases you will also
 # need to update your instance_type.
-aws_region = "us-west-2"
+aws_region = "us-east-1"
 
 # Enabling Redis may incur additional costs. You will also need to enable Redis
 # in your staging.yaml and production.yaml configuration files.
@@ -28,9 +28,9 @@ enable_redis = false
 # *.example.com to your certificate. You will need to create one certificate
 # for your main region and one for use with Cloudfront that resides in the
 # us-east-1 region.
-hosted_zone_id             = "<YOUR HOSTED ZONE ID>"
-top_domain                 = "<YOUR DOMAIN NAME>"
-certificate_arn            = "<YOUR CERTIFICATE ARN>"
+hosted_zone_id             = "Z05900256LPMC3YC5A4Y"
+top_domain                 = "luisgustavo.dev.br"
+certificate_arn            = "arn:aws:acm:us-east-1:261183669449:certificate/1c5cfbcd-7a25-46b0-8927-56f1839d1475"
 cloudfront_certificate_arn = "<YOUR CERTIFICATE ARN IN US-EAST-1>"
 
 # Subdomains for different services. Default values are recommended, but you
@@ -60,7 +60,8 @@ use_top_domain_for_web = false
 # Note: For some regions the t2.micro is not available. If so, consult the AWS
 # documentation to find another instance type that suits your needs.
 instance_type                = "t2.micro"
-instance_ami                 = "ami-0ca285d4c2cda3300"
+# instance_ami                 = "ami-0ca285d4c2cda3300"
+instance_ami                 = "ami-0a3c3a20c09d6f377"
 autoscaling_min_size         = 1
 autoscaling_max_size         = 1
 autoscaling_desired_capacity = 1
