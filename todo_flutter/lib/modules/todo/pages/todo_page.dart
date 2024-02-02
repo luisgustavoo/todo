@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
-import 'package:todo_client/todo_client.dart';
 import 'package:todo_flutter/cubit/app_cubit.dart';
 import 'package:todo_flutter/modules/todo/cubit/todo_cubit.dart';
 
