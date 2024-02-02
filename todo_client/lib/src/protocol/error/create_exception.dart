@@ -47,7 +47,7 @@ abstract class CustomException extends _i1.SerializableEntity
   Map<String, dynamic> toJson() {
     return {
       'message': message,
-      'errorType': errorType,
+      'errorType': errorType.toJson(),
     };
   }
 }

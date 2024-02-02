@@ -1,11 +1,13 @@
-
 import 'package:serverpod/serverpod.dart';
 import 'package:todo_server/src/generated/protocol.dart';
 
 class TodoEndpoint extends Endpoint {
   Future<void> create(Session session, Todo todo) async {
     try {
-      await Todo.db.insertRow(session, todo);
+      final logged = await session.isUserSignedIn;
+      if (logged) {
+        await Todo.db.insertRow(session, todo);
+      }
     } on Exception catch (e, s) {
       session.log(
         '$e ${session.server.runMode}',
@@ -17,7 +19,7 @@ class TodoEndpoint extends Endpoint {
         message: 'Erro ao criar tarefa $e',
         errorType: ErrorTypeEnum.insert,
       );
-    } 
+    }
   }
 
   Future<List<Todo>> findAll(Session session) {
@@ -27,6 +29,17 @@ class TodoEndpoint extends Endpoint {
       throw CustomException(
         message: 'Erro ao buscar todas as tarefas $e',
         errorType: ErrorTypeEnum.select,
+      );
+    }
+  }
+
+  Future<Todo> update(Session session, Todo todo) {
+    try {
+      return Todo.db.updateRow(session, todo);
+    } on Exception catch (e) {
+      throw CustomException(
+        message: 'Erro ao atualizar tarefas $e',
+        errorType: ErrorTypeEnum.update,
       );
     }
   }

@@ -33,6 +33,13 @@ class EndpointTodo extends _i1.EndpointRef {
         'findAll',
         {},
       );
+
+  _i2.Future<_i3.Todo> update(_i3.Todo todo) =>
+      caller.callServerEndpoint<_i3.Todo>(
+        'todo',
+        'update',
+        {'todo': todo},
+      );
 }
 
 class _Modules {

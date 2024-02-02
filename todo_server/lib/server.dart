@@ -1,4 +1,5 @@
 import 'package:serverpod/serverpod.dart';
+import 'package:serverpod_auth_server/module.dart' as auth;
 import 'package:todo_server/src/generated/endpoints.dart';
 import 'package:todo_server/src/generated/protocol.dart';
 import 'package:todo_server/src/web/routes/root.dart';
@@ -26,6 +27,19 @@ Future<void> run(List<String> args) async {
     RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
     '/*',
   );
+
+  auth.AuthConfig.set(auth.AuthConfig(
+    sendValidationEmail: (session, email, validationCode) async {
+      // TODO: integrate with mail server
+      print('Validation code: $validationCode');
+      return true;
+    },
+    sendPasswordResetEmail: (session, userInfo, validationCode) async {
+      // TODO: integrate with mail server
+      print('Validation code: $validationCode');
+      return true;
+    },
+  ));
 
   // Start the server.
   await pod.start();
