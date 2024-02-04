@@ -7,9 +7,11 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-
   serverpod: ^1.2.2
   serverpod_auth_server: ^1.2.1
+  googleapis_auth: ^1.4.1
+  mailer: ^6.0.1
+  logging: ^1.2.0
 
 dev_dependencies:
   test: ^1.25.2

@@ -1,5 +1,7 @@
 import 'package:serverpod/serverpod.dart';
 import 'package:serverpod_auth_server/module.dart' as auth;
+import 'package:todo_server/src/email/credential.dart';
+import 'package:todo_server/src/email/email_service.dart';
 import 'package:todo_server/src/generated/endpoints.dart';
 import 'package:todo_server/src/generated/protocol.dart';
 import 'package:todo_server/src/web/routes/root.dart';
@@ -30,6 +32,12 @@ Future<void> run(List<String> args) async {
 
   auth.AuthConfig.set(auth.AuthConfig(
     sendValidationEmail: (session, email, validationCode) async {
+      final client = await Credentials.obtainAuthenticatedClient();
+
+      await EmailService.sendEmail(
+        code: validationCode,
+        credentials: client.credentials,
+      );
       // TODO: integrate with mail server
       print('Validation code: $validationCode');
       return true;
