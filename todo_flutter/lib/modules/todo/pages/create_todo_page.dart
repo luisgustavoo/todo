@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:todo_client/todo_client.dart';
 import 'package:todo_flutter/modules/todo/cubit/todo_cubit.dart';
 
@@ -66,7 +66,7 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                     isDone: false,
                   );
                   try {
-                    await context.read<TodoCubit>().create(todo);
+                    await context.get<TodoCubit>().create(todo);
                     nav.pop(true);
                   } on Exception catch (e, s) {
                     log(
@@ -77,7 +77,7 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                   }
                 }
               },
-              child: const Text('Criara'),
+              child: const Text('Criar'),
             ),
           ],
         ),

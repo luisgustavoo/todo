@@ -24,7 +24,19 @@ class TodoEndpoint extends Endpoint {
 
   Future<List<Todo>> findAll(Session session) {
     try {
-      return Todo.db.find(session);
+      return Todo.db.find(
+        session,
+        orderByList: (todo) {
+          return [
+            Order(
+              column: todo.isDone,
+            ),
+            Order(
+              column: todo.description,
+            ),
+          ];
+        },
+      );
     } on Exception catch (e) {
       throw CustomException(
         message: 'Erro ao buscar todas as tarefas $e',

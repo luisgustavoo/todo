@@ -38,16 +38,9 @@ class TodoCubit extends Cubit<TodoState> {
 
   Future<void> update(Todo todo) async {
     try {
-      state.todoList.firstWhere((element) => element == todo).isDone =
-          todo.isDone;
+      await _repository.update(todo.copyWith(isDone: todo.isDone));
 
-      await _repository.update(todo);
-
-      emit(
-        state.copyWith(
-          todoList: [...state.todoList],
-        ),
-      );
+      await findAll();
     } on Exception catch (e, s) {
       log('Erro ao atualizar Todo', error: e, stackTrace: s);
     }

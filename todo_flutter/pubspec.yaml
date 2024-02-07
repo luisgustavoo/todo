@@ -1,10 +1,10 @@
 name: todo_flutter
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
   flutter:
@@ -17,7 +17,7 @@ dependencies:
   todo_client:
     path: ../todo_client
   equatable: ^2.0.5
-
+  flutter_getit: ^2.0.0
 
 dev_dependencies:
   flutter_test:

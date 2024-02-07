@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 import 'package:todo_flutter/cubit/app_cubit.dart';
 
@@ -17,7 +18,7 @@ class _AccountPageState extends State<AccountPage> {
   void initState() {
     super.initState();
 
-    sessionManager = context.read<AppCubit>().sessionManager;
+    sessionManager = context.get<AppCubit>().sessionManager;
   }
 
   @override
@@ -42,10 +43,10 @@ class _AccountPageState extends State<AccountPage> {
               onPressed: () async {
                 final nav = Navigator.of(context);
 
-                final disconnect = await context.read<AppCubit>().disconnect();
+                final disconnect = await context.get<AppCubit>().disconnect();
 
                 if (disconnect) {
-                  await nav.pushNamedAndRemoveUntil('/', (route) => false);
+                  await nav.pushNamedAndRemoveUntil('/auth', (route) => false);
                 }
               },
               child: const Text('Sign out'),

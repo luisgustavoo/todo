@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 import 'package:todo_flutter/cubit/app_cubit.dart';
 
@@ -12,19 +12,8 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   @override
-  void initState() {
-    super.initState();
-
-    final isLogged = context.read<AppCubit>().sessionManager.isSignedIn;
-
-    if (isLogged) {
-      Navigator.pushReplacementNamed(context, '/todo');
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final client = context.read<AppCubit>().client;
+    final client = context.get<AppCubit>().client;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -44,7 +33,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                // context.read<TodoCubit>().create(
+                //context.get<TodoCubit>().create(
                 //       Todo(
                 //         description: 'Teste',
                 //         isDone: false,
