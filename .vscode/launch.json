@@ -34,7 +34,10 @@
             "name": "todo_server",
             "cwd": "todo_server",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--apply-migrations"
+            ]
         }
     ]
 }
